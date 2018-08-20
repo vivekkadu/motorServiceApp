@@ -21,7 +21,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.vivek.motorservice"
+    },
+    "android": {
+      "package": "com.vivek.motorservice"
+    },
+    "packagerOpts": {
+      "nonPersistent": true
     }
   }
 }

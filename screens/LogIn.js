@@ -8,7 +8,7 @@ import {
   StatusBar,
   Dimensions
 } from  'react-native';
-
+import axios from 'axios';
 import { Card, CardItem, Header } from 'native-base';
 import { Spinner } from '../components/common';
 
@@ -43,7 +43,32 @@ class LogIn extends Component {
 
    onPress = () => {
      this.setState({ renderButton: false});
-     fetch('http://gentle-castle-35975.herokuapp.com/users/login', {
+
+
+    //  axios({
+    // method: 'post',
+    // url: 'https://shrouded-cliffs-62043.herokuapp.com/rest-auth/login/',
+    // data: JSON.stringify({
+    //   username: this.state.phone,
+    //   password: this.state.password
+    // }),
+    // config: {
+    //   headers:
+    //    {
+    //      Accept: 'application/json',
+    //     'Content-Type': 'application/json'
+    //     }}
+    // })
+    // .then((response) =>{
+    //      this.props.navigation.navigate('Home');
+    //      console.log(response);
+    // })
+    // .catch((response) => {
+    //      this.setState({modalVisible: true , renderButton: true})
+    //     console.log(response);
+    // });
+
+    fetch('http://gentle-castle-35975.herokuapp.com/users/login', {
        method: 'POST',
        headers: {
          Accept: 'application/json',
@@ -54,9 +79,9 @@ class LogIn extends Component {
         password: this.state.password,
       }),
    }).then((response) => {
-        const token = response.headers.map.xauth[0];
+        // const token = response.headers.map.xauth[0];
         this.props.navigation.navigate('Home');
-        console.log(this.state.token);
+        console.log(response);
       })
       .catch((error) => {
         this.setState({modalVisible: true , renderButton: true})
@@ -79,9 +104,9 @@ class LogIn extends Component {
 
          <View style={styles.ContainerStyle}>
                <TextInput
-                 placeholder= "Email"
+                 placeholder= "email No"
                  underlineColorAndroid="transparent"
-                 keyboardType="email-address"
+                 // keyboardType="phone-pad"
                  style={styles.textInputStyle}
                  onChangeText={(email) => this.setState({email})}
                  value={this.state.email}

@@ -16,9 +16,9 @@ const AppStack = createStackNavigator({ Home: Home, Account: Account });
 export default createSwitchNavigator(
     {
       App: AppStack,
-    //   Auth: AuthStack,
+      Auth: AuthStack,
     },
     {
-    //   initialRouteName: 'Auth',
+       initialRouteName: 'Auth',
     }
   );
